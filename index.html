@@ -1,52 +1,272 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>媒體網路數據週報</title>
+<title>媒體網路數據報表</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f0; color: #1a1a1a; padding: 2rem 1rem; }
-  .container { max-width: 600px; margin: 0 auto; }
-  .header { margin-bottom: 2rem; }
-  .header p { font-size: 13px; color: #888; margin-bottom: 4px; }
-  .header h1 { font-size: 22px; font-weight: 500; }
-  .list { display: flex; flex-direction: column; gap: 10px; }
-  .item { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: inherit; transition: border-color 0.15s; }
-  .item:hover { border-color: #aaa; }
-  .item-week { font-size: 12px; color: #888; margin-bottom: 3px; }
-  .item-date { font-size: 15px; font-weight: 500; }
-  .item-link { font-size: 13px; color: #1a6fc4; white-space: nowrap; margin-left: 1rem; }
-  .footer { font-size: 12px; color: #aaa; margin-top: 1.5rem; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;flex-direction:column;gap:24px;align-items:center}
+.slide{width:960px;height:580px;background:#f0f4f8;border-radius:8px;overflow:hidden;border:0.5px solid #d0d8e4;display:flex;flex-direction:column}
+.slide-head{background:#0d1e3a;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.slide-head-title{font-size:15px;font-weight:500;color:#fff}
+.slide-head-sub{font-size:11px;color:#7a9cc6;background:#0a1628;padding:3px 12px;border-radius:4px}
+.slide-body{padding:14px 20px;flex:1;overflow:hidden;display:flex;gap:14px}
+.left-col{display:flex;flex-direction:column;gap:10px;width:308px;flex-shrink:0}
+.right-col{flex:1;min-width:0;display:flex;flex-direction:column}
+.card{background:#fff;border-radius:6px;padding:10px 12px;border:0.5px solid #d0d8e4;display:flex;flex-direction:column;overflow:hidden}
+.card-title{font-size:11px;color:#6a8aaa;margin-bottom:6px;flex-shrink:0}
+.legend-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;flex-shrink:0}
+.leg{display:flex;align-items:center;gap:4px;font-size:10px;color:#6a7a8a}
+.dot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
+.chart-wrap{position:relative;flex:1;min-height:0}
+.p2-body{padding:12px 22px;flex:1;overflow:hidden;display:flex;flex-direction:column;gap:0}
+.p2-header{display:grid;grid-template-columns:2fr 96px 88px 1fr;gap:0;padding:0 0 6px;border-bottom:1px solid #d0d8e4;flex-shrink:0}
+.p2-rows{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding-top:4px}
+.p2-row{display:grid;grid-template-columns:2fr 96px 88px 1fr;gap:0;align-items:center;border-bottom:1px solid #eef2f8;flex:1;padding:4px 0}
+.p2-row:last-child{border-bottom:none}
+.p2-name{font-size:13px;font-weight:500;color:#0d1e3a;display:flex;align-items:center;gap:6px;overflow:hidden}
+.stat-num{font-size:15px;font-weight:500;color:#0d1e3a;line-height:1}
+.stat-sub{font-size:10px;color:#6a8aaa;margin-top:1px}
+.bar-track{background:#e8f0f8;border-radius:2px;height:4px;margin-top:4px;width:100%}
+.bar-fill{height:4px;border-radius:2px;background:#1a5a9a}
+.p3-card-grid{padding:10px 18px;flex:1;overflow:hidden;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:8px}
+.p3-card{background:#fff;border-radius:6px;border:0.5px solid #d0d8e4;overflow:hidden;display:flex;flex-direction:row}
+.p3-card-accent{width:4px;flex-shrink:0}
+.p3-card-left{padding:8px 10px;width:180px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;border-right:0.5px solid #e8f0f8}
+.p3-card-right{padding:8px 14px;flex:1;overflow:hidden;display:flex;align-items:center}
+.p3-card-name{font-size:12px;font-weight:500;color:#0d1e3a;display:flex;align-items:flex-start;gap:6px}
+.p3-card-summary{font-size:11px;color:#2a3a4a;line-height:1.6;overflow:hidden}
+.p3-span2{grid-column:1 / -1}
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <p>皮爾森數據媒體</p>
-    <h1>媒體網路數據週報</h1>
+
+<!-- P1 -->
+<div class="slide">
+  <div class="slide-head">
+    <div class="slide-head-title">媒體網路數據報表 1　本週媒體發文概況</div>
+    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
   </div>
-
-  <div class="list">
-
-    <a class="item" href="20260628.html">
-      <div>
-        <div class="item-date">2026/06/22 - 2026/06/28</div>
+  <div class="slide-body">
+    <div class="left-col">
+      <div class="card" style="flex:0 0 196px">
+        <div class="card-title">每日新聞類別比例</div>
+        <div class="legend-row">
+          <span class="leg"><span class="dot" style="background:#3a7abd"></span>公共事務新聞</span>
+          <span class="leg"><span class="dot" style="background:#9db8c8"></span>非公共事務新聞</span>
+        </div>
+        <div class="chart-wrap"><canvas id="c1"></canvas></div>
       </div>
-      <span class="item-link">開啟報表 →</span>
-    </a>
-
-    <a class="item" href="20260621.html">
-      <div>
-        <div class="item-date">2026/06/15 - 2026/06/21</div>
+      <div class="card" style="flex:1;min-height:0">
+        <div class="card-title">各媒體公共新聞總量佔比與週變化</div>
+        <div class="legend-row" style="gap:10px">
+          <span class="leg"><span class="dot" style="background:#c0392b"></span>增加</span>
+          <span class="leg"><span class="dot" style="background:#8aaac8"></span>持平</span>
+          <span class="leg"><span class="dot" style="background:#27ae60"></span>減少</span>
+        </div>
+        <div id="tm" style="flex:1;position:relative;min-height:0"></div>
       </div>
-      <span class="item-link">開啟報表 →</span>
-    </a>
-
-
+    </div>
+    <div class="right-col">
+      <div class="card" style="flex:1">
+        <div class="card-title">本週各媒體每日公共新聞總量<span style="font-size:8px;color:#9ab0c8;font-weight:400;margin-left:6px">※ Yahoo 為新聞聚合平台，新聞量含轉載彙整內容，故列為環境參照、不納入排名。</span></div>
+        <div id="heatmap-wrap" style="flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
+      </div>
+    </div>
   </div>
-
-  <p class="footer">每週更新 · Taiwan Media Insights for Public Communication</p>
 </div>
+<!-- P2 -->
+<div class="slide">
+  <div class="slide-head">
+    <div class="slide-head-title">媒體網路數據報表 2　本週議題熱度分析</div>
+    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+  </div>
+  <div class="p2-body">
+    <div class="p2-header">
+      <div style="font-size:11px;color:#6a8aaa;padding-left:26px">議題事件</div><div style="font-size:11px;color:#6a8aaa">本週新聞數</div><div style="font-size:11px;color:#6a8aaa">關注媒體數</div><div style="font-size:11px;color:#6a8aaa">最關注媒體 TOP3</div>
+    </div>
+    <div class="p2-rows" id="p2"></div>
+  </div>
+</div>
+<!-- P3a -->
+<div class="slide">
+  <div class="slide-head">
+    <div class="slide-head-title">媒體網路數據報表 3　本週議題討論摘要（1–5）</div>
+    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+  </div>
+  <div class="p3-card-grid" id="p3a"></div>
+</div>
+<!-- P3b -->
+<div class="slide">
+  <div class="slide-head">
+    <div class="slide-head-title">媒體網路數據報表 4　本週議題討論摘要（6–10）</div>
+    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+  </div>
+  <div class="p3-card-grid" id="p3b"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const days=["6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28"];
+function fmt(n){return Number(n).toLocaleString();}
+new Chart(document.getElementById("c1"),{type:"bar",data:{labels:days,datasets:[
+  {label:"公共事務新聞",data:[41, 41, 42, 45, 44, 44, 45],backgroundColor:"#3a7abd",stack:"s"},
+  {label:"非公共事務新聞",data:[59, 59, 58, 55, 56, 56, 55],backgroundColor:"#9db8c8",stack:"s"}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+scales:{x:{ticks:{color:"#6a8aaa",font:{size:9}},grid:{color:"#eef2f8"}},
+y:{max:100,stacked:true,ticks:{color:"#6a8aaa",font:{size:9},callback:v=>v+"%"},grid:{color:"#eef2f8"}}}},
+plugins:[{id:"sl",afterDatasetsDraw(chart){const ctx=chart.ctx;
+chart.data.datasets.forEach((ds,di)=>{const meta=chart.getDatasetMeta(di);
+meta.data.forEach((bar,i)=>{const val=ds.data[i];if(val<6)return;
+ctx.save();ctx.fillStyle="#fff";ctx.font="bold 9px Arial";
+ctx.textAlign="center";ctx.textBaseline="middle";
+ctx.fillText(Math.round(val)+"%",bar.x,bar.y+bar.height/2);ctx.restore();});});}}]});
+const tmData=[{"name": "聯合", "val": 3296, "chg": 9}, {"name": "自由", "val": 3043, "chg": 8}, {"name": "民視新聞網", "val": 1924, "chg": 7}, {"name": "鏡傳媒", "val": 1874, "chg": 5}, {"name": "經濟日報", "val": 1747, "chg": 4}, {"name": "華視新聞網", "val": 1615, "chg": 16}, {"name": "三立", "val": 1453, "chg": 5}, {"name": "ETtoday", "val": 1431, "chg": 13}, {"name": "中央社", "val": 1259, "chg": 13}, {"name": "TVBS", "val": 1097, "chg": 7}, {"name": "中天新聞網", "val": 969, "chg": 13}];
+const tmTotal=tmData.reduce((s,d)=>s+d.val,0);
+function getTMColor(chg){if(chg===0)return{bg:"#8aaac8",tc:"#fff"};
+const abs=Math.abs(chg),t=Math.min(abs/30,1);
+if(chg>0){const r=Math.round(232-t*72),g=Math.round(160-t*140),b=Math.round(150-t*130);
+return{bg:`rgb(${r},${g},${b})`,tc:"#fff"};}
+else{const r=Math.round(144-t*134),g=Math.round(200-t*90),b=Math.round(160-t*120);
+return{bg:`rgb(${r},${g},${b})`,tc:"#fff"};}}
+
+function fmtChg(chg){if(chg>0)return"(+"+chg+"%)";if(chg===0)return"(持平)";return"("+chg+"%)"}
+function squarify(items,x,y,w,h){if(!items.length)return[];
+const results=[];let remaining=[...items];
+while(remaining.length){const isWide=w>=h;let row=[],rowSum=0,bestRatio=Infinity;
+for(let i=0;i<remaining.length;i++){row.push(remaining[i]);rowSum+=remaining[i].area;
+const maxA=Math.max(...row.map(r=>r.area)),minA=Math.min(...row.map(r=>r.area));
+const s=isWide?h:w;const ratio=Math.max(s*s*maxA/(rowSum*rowSum),rowSum*rowSum/(s*s*minA));
+if(ratio>bestRatio&&row.length>1){row.pop();rowSum-=remaining[i].area;break;}bestRatio=ratio;}
+const rowLen=isWide?rowSum/h:rowSum/w;let pos=isWide?y:x;
+row.forEach(item=>{const iL=item.area/rowLen;let rect;
+if(isWide){rect={x,y:pos,w:rowLen,h:iL};pos+=iL;}
+else{rect={x:pos,y,w:iL,h:rowLen};pos+=iL;}results.push({...item,rect});});
+remaining=remaining.slice(row.length);
+if(isWide){x+=rowLen;w-=rowLen;}else{y+=rowLen;h-=rowLen;}}return results;}
+const mediaData=[{"name": "Yahoo", "daily": [1044, 1148, 1165, 1350, 1200, 824, 715], "weekTotal": 7446, "histWeekAvg": 7295.5, "dayAvg": 1063.7}, {"name": "聯合", "daily": [487, 503, 537, 558, 534, 334, 343], "weekTotal": 3296, "histWeekAvg": 3104.0, "dayAvg": 470.9}, {"name": "自由", "daily": [395, 467, 488, 532, 472, 387, 302], "weekTotal": 3043, "histWeekAvg": 2882.0, "dayAvg": 434.7}, {"name": "民視新聞網", "daily": [279, 286, 290, 328, 287, 236, 218], "weekTotal": 1924, "histWeekAvg": 1881.0, "dayAvg": 274.9}, {"name": "鏡傳媒", "daily": [272, 274, 294, 365, 320, 193, 156], "weekTotal": 1874, "histWeekAvg": 1745.5, "dayAvg": 267.7}, {"name": "經濟日報", "daily": [270, 320, 322, 307, 282, 130, 116], "weekTotal": 1747, "histWeekAvg": 1655.0, "dayAvg": 249.6}, {"name": "華視新聞網", "daily": [232, 262, 255, 277, 260, 173, 156], "weekTotal": 1615, "histWeekAvg": 1457.5, "dayAvg": 230.7}, {"name": "三立", "daily": [209, 199, 228, 291, 210, 160, 156], "weekTotal": 1453, "histWeekAvg": 1330.5, "dayAvg": 207.6}, {"name": "ETtoday", "daily": [190, 202, 244, 263, 243, 163, 126], "weekTotal": 1431, "histWeekAvg": 1312.5, "dayAvg": 204.4}, {"name": "中央社", "daily": [180, 206, 195, 229, 203, 124, 122], "weekTotal": 1259, "histWeekAvg": 1167.0, "dayAvg": 179.9}, {"name": "TVBS", "daily": [151, 160, 177, 178, 179, 135, 117], "weekTotal": 1097, "histWeekAvg": 1019.0, "dayAvg": 156.7}];
+mediaData.forEach(m=>{m.total=m.daily.reduce((a,b)=>a+b,0);});
+mediaData.sort((a,b)=>b.total-a.total);
+const allVals=mediaData.flatMap(m=>m.daily);const maxVal=Math.max(...allVals);
+function heatColor(v,max){const t=v/max;const r=Math.round(218-t*205),g=Math.round(232-t*202),b=Math.round(248-t*190);return `rgb(${r},${g},${b})`;}
+function heatTextColor(v,max){return v/max>0.5?"#fff":"#2a3a4a";}
+const p2data=[{"num": 1, "color": "#0d3a7a", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "total": 3736, "media": 35, "top3": [{"n": "自由", "c": 342, "p": 9}, {"n": "聯合", "c": 280, "p": 7}, {"n": "鏡傳媒", "c": 223, "p": 6}]}, {"num": 2, "color": "#1a4a8a", "name": "2026 地方大選", "total": 3190, "media": 36, "top3": [{"n": "自由", "c": 334, "p": 10}, {"n": "聯合", "c": 267, "p": 8}, {"n": "鏡傳媒", "c": 196, "p": 6}]}, {"num": 3, "color": "#1a5a9a", "name": "美以伊戰爭", "total": 1756, "media": 35, "top3": [{"n": "民視新聞網", "c": 199, "p": 11}, {"n": "聯合", "c": 165, "p": 9}, {"n": "經濟日報", "c": 155, "p": 9}]}, {"num": 4, "color": "#2a6aaa", "name": "國防議題", "total": 1470, "media": 36, "top3": [{"n": "自由", "c": 149, "p": 10}, {"n": "聯合", "c": 139, "p": 9}, {"n": "經濟日報", "c": 95, "p": 6}]}, {"num": 5, "color": "#3a7aba", "name": "毒駕與毒品", "total": 669, "media": 28, "top3": [{"n": "自由", "c": 72, "p": 11}, {"n": "聯合", "c": 64, "p": 10}, {"n": "ETtoday", "c": 46, "p": 7}]}, {"num": 6, "color": "#4a8acb", "name": "立法院長韓國瑜訪美", "total": 620, "media": 33, "top3": [{"n": "自由", "c": 60, "p": 10}, {"n": "聯合", "c": 55, "p": 9}, {"n": "經濟日報", "c": 30, "p": 5}]}, {"num": 7, "color": "#2a5a8a", "name": "委內瑞拉強震", "total": 600, "media": 31, "top3": [{"n": "民視新聞網", "c": 74, "p": 12}, {"n": "聯合", "c": 54, "p": 9}, {"n": "經濟日報", "c": 46, "p": 8}]}, {"num": 8, "color": "#1a6a9a", "name": "鳳梨釋迦產銷議題", "total": 599, "media": 34, "top3": [{"n": "聯合", "c": 44, "p": 7}, {"n": "自由", "c": 37, "p": 6}, {"n": "中天新聞網", "c": 33, "p": 6}]}, {"num": 9, "color": "#0a4a7a", "name": "歐洲熱浪", "total": 492, "media": 32, "top3": [{"n": "民視新聞網", "c": 97, "p": 20}, {"n": "聯合", "c": 39, "p": 8}, {"n": "華視新聞網", "c": 32, "p": 7}]}, {"num": 10, "color": "#2a7a9a", "name": "烏俄戰爭", "total": 382, "media": 32, "top3": [{"n": "自由", "c": 56, "p": 15}, {"n": "民視新聞網", "c": 55, "p": 14}, {"n": "聯合", "c": 26, "p": 7}]}];
+const p3data=[{"num": 1, "color": "#0d3a7a", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "summary": "本週受米克拉颱風外圍環流、鋒面與西南氣流影響，引發全台豪雨，各地紛紛傳出災情，中央與各縣市也隨即推出淹水補助。豪雨與高溫導致全台農損突破 1.3 億元，包含雲林文蛤暴斃、瓜果作物受損，農業部啟動天然災害現金救助與低利貸款。政治方面，台北市內湖地區淹水，台北市議員游淑慧、林延鳳等人質疑蔣萬安市府的應變機制與清淤成效，屏東縣、新竹縣市未及時宣布停班停課也引發政治攻防。"}, {"num": 2, "color": "#1a4a8a", "name": "2026 地方大選", "summary": "由於本周豪雨引發各地淹水災情頻傳，各縣市治水成效成為選戰討論焦點。其他地方大選新聞焦點為：北市國民黨議員秦慧珠質疑，台北市研考會主委殷瑋於議會上搶答質詢會弱化市長，引發政治粉專「政客爽」發起拒投運動；新北市民進黨參選人蘇巧慧胞妹補助按持續引發討論；《ETtoday 民調雲》結果顯示，國民黨高雄市長參選人柯志恩以 46.8% 微幅領先民進黨參選人賴瑞隆。"}, {"num": 3, "color": "#1a5a9a", "name": "美以伊戰爭", "summary": "本週伊朗與美國達成協議，荷莫茲海峽已重新開放，卻傳出伊朗襲擊新加坡籍貨輪「長麗輪」、巴拿馬籍商船等事件。美軍隨後戰開報復行動，打擊伊朗境內監控基礎設施、通訊系統、防空設施、無人機等多個目標，伊朗也發動無人機與飛彈襲擊鄰國作為回應，並稱荷姆茲海峽歸伊朗管理。"}, {"num": 4, "color": "#2a6aaa", "name": "國防議題", "summary": "本週國防議題焦點：1. 立法院暫緩列案行政院所提的 2,100 億國防自主無人載具採購特別條例，民眾黨與國民黨擬各自提出黨版相關草案。2. 國軍戰開為期五天的「立即備戰操演」，M1A2T 戰車首度參與。時逢美日聯合軍演，中國國防部稱高度戒備。3. 英、法、德駐台機構發布共同發聲明，關切中國近期在台灣東部海域的活動，並重申反對任何單方面改變現狀的行為。"}, {"num": 5, "color": "#3a7aba", "name": "毒駕與毒品", "summary": "近期台灣新興毒品依托咪酯氾濫，引發多起毒駕案件。為此，行政院會正式通過刑法、刑法實施法修法，增訂毒、酒駕累犯再犯不得假釋。另外，為防制毒品進入校園，政府擬引進由退休軍警組成的「第五級保全」協助查緝校園毒品，但遭質疑權責不明，教育部對此回應此非強制性機制。"}, {"num": 6, "color": "#4a8acb", "name": "立法院長韓國瑜訪美", "summary": "立法院長韓國瑜本週率跨黨派立委訪美。首站抵達鳳凰城參訪台積電廠區，隨後訪問華府，與白宮、戰爭部官員與參眾議員交流，並會晤前眾議長裴洛西、現任眾議長強生，美方並重申台美承諾不變。此外，台中市副市長鄭照新前往送機、與國民黨主席鄭麗文行程相比較亦為本週的熱議焦點。"}, {"num": 7, "color": "#2a5a8a", "name": "委內瑞拉強震", "summary": "委內瑞拉北部外海於 6 月 24 日連續發生規模 7.2 與 7.5 的強震，為126年來最大地震。首都卡拉卡斯多棟建築倒塌、機場關閉，全國進入緊急狀態。截至28 日已逾 1430 人死亡、5 萬人失蹤，各國紛紛馳援。"}, {"num": 8, "color": "#1a6a9a", "name": "鳳梨釋迦產銷議題", "summary": "陸委會副主委梁文傑稱台灣人幾乎不吃鳳梨釋迦引發爭議後，隨後認錯並自費 15.5 萬元認購冰棒致歉。此外，台東縣長饒慶鈴因預錄海峽論壇影片推銷鳳梨釋迦而遭點名查處，執政黨強調中國市場具統戰「養套殺」高風險，輔導轉作並鼓勵分散往美日法等市場；在野黨與地方首長則稱此舉為政治犧牲農民生計。"}, {"num": 9, "color": "#0a4a7a", "name": "歐洲熱浪", "summary": "歐洲近期出現極端高溫，多國拉響紅色警報，各地高溫紛紛刷新紀錄，巴黎羅浮宮與鐵塔破例提早關閉。高溫在歐洲引發多起意外：溺水事件頻傳、幼童受困車內遭熱死；鐵軌膨脹導致鐵路癱瘓、核電廠由於無法冷卻而被迫減產。熱浪災情引發歐洲民眾搶購移動式冷氣風潮。"}, {"num": 10, "color": "#2a7a9a", "name": "烏俄戰爭", "summary": "烏俄持續在烏東地區對抗，烏軍無人機襲擊克里米亞和俄羅斯南部物流及石油設施，導致該地區斷電，進入緊急狀態並無限期停售民用汽油。外交方面，烏克蘭重建大會於波蘭格旦斯克舉行，歐盟將撥付貸款協助烏克蘭重建，但烏克蘭與波蘭近期因二戰歷史爭議而關係緊張。"}];
+window.addEventListener("load",()=>{
+const container=document.getElementById("tm");
+const W=container.offsetWidth,H=container.offsetHeight,totalArea=W*H;
+const items=tmData.map(d=>({...d,pct:Math.round(d.val/tmTotal*100),area:(d.val/tmTotal)*totalArea}));
+const placed=squarify(items,0,0,W,H);
+const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+svg.setAttribute("width",W);svg.setAttribute("height",H);svg.style.display="block";
+placed.forEach(item=>{const r=item.rect;const{bg,tc}=getTMColor(item.chg);const pad=2;
+const g=document.createElementNS("http://www.w3.org/2000/svg","g");
+const rect=document.createElementNS("http://www.w3.org/2000/svg","rect");
+rect.setAttribute("x",r.x+pad);rect.setAttribute("y",r.y+pad);
+rect.setAttribute("width",Math.max(0,r.w-pad*2));rect.setAttribute("height",Math.max(0,r.h-pad*2));
+rect.setAttribute("rx","4");rect.setAttribute("fill",bg);g.appendChild(rect);
+const cx=r.x+r.w/2,cy=r.y+r.h/2,rw=r.w-pad*2,rh=r.h-pad*2;
+if(rw>8&&rh>8){const ns=Math.min(11,Math.max(7,rw/7));
+if(rw>30&&rh>40){
+const t1=document.createElementNS("http://www.w3.org/2000/svg","text");
+t1.setAttribute("x",cx);t1.setAttribute("y",cy-8);
+t1.setAttribute("text-anchor","middle");t1.setAttribute("dominant-baseline","middle");
+t1.setAttribute("fill",tc);t1.setAttribute("font-size",ns);
+t1.setAttribute("font-weight","500");t1.setAttribute("font-family","Arial");
+t1.textContent=item.name;g.appendChild(t1);
+const t2=document.createElementNS("http://www.w3.org/2000/svg","text");
+t2.setAttribute("x",cx);t2.setAttribute("y",cy+5);
+t2.setAttribute("text-anchor","middle");t2.setAttribute("dominant-baseline","middle");
+t2.setAttribute("fill",tc);t2.setAttribute("font-size",Math.max(7,ns-2));
+t2.setAttribute("font-family","Arial");
+t2.textContent=item.pct+"% "+fmtChg(item.chg);g.appendChild(t2);
+}else if(rw>20&&rh>20){
+const t1=document.createElementNS("http://www.w3.org/2000/svg","text");
+t1.setAttribute("x",cx);t1.setAttribute("y",cy);
+t1.setAttribute("text-anchor","middle");t1.setAttribute("dominant-baseline","middle");
+t1.setAttribute("fill",tc);t1.setAttribute("font-size",Math.min(10,ns));
+t1.setAttribute("font-family","Arial");t1.textContent=item.name;g.appendChild(t1);
+}}svg.appendChild(g);});
+container.appendChild(svg);
+const wrap=document.getElementById("heatmap-wrap");
+const cellH=Math.floor((wrap.offsetHeight-30)/Math.max(mediaData.length,1));
+const headerW=96,weekW=44,histW=56;
+const tbl=document.createElement("table");
+tbl.style.cssText="width:100%;border-collapse:collapse;table-layout:fixed";
+const thead=document.createElement("thead");
+const htr=document.createElement("tr");
+[{label:"媒體",w:headerW},...days.map(d=>({label:d,w:null})),{label:"本週總發文量 ↓",w:weekW},{label:"歷史平均週發文量（本週±）",w:histW}].forEach(h=>{
+const th=document.createElement("th");
+th.style.cssText=`font-size:9px;color:#6a8aaa;font-weight:400;text-align:center;padding:2px 0;border-bottom:1px solid #d0d8e4;${h.w?"width:"+h.w+"px;min-width:"+h.w+"px":""}`;
+th.textContent=h.label;htr.appendChild(th);});
+thead.appendChild(htr);tbl.appendChild(thead);
+const tbody=document.createElement("tbody");
+mediaData.forEach((m,rowIdx)=>{
+const tr=document.createElement("tr");
+const ntd=document.createElement("td");
+ntd.style.cssText=`font-size:10px;font-weight:500;color:#1a3a5a;padding:0 2px;height:${cellH}px;overflow:hidden;width:${headerW}px;min-width:${headerW}px`;
+const _badge=rowIdx>0?`<span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#1a5a9a;color:#fff;font-size:9px;font-weight:500;flex-shrink:0;margin-right:2px">${rowIdx}</span>`:`<span style="display:inline-block;width:16px;margin-right:2px;flex-shrink:0"></span>`;
+ntd.innerHTML=`<span style="display:flex;align-items:center;height:100%;overflow:hidden">${_badge}<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.name}</span></span>`;
+tr.appendChild(ntd);
+m.daily.forEach(v=>{const td=document.createElement("td");
+const bg=heatColor(v,maxVal);const tc=heatTextColor(v,maxVal);
+td.style.cssText=`background:${bg};text-align:center;font-size:${v>0?9:8}px;font-weight:500;color:${tc};height:${cellH}px;border:1px solid #fff`;
+td.textContent=v>0?fmt(v):"";tr.appendChild(td);});
+const wtd=document.createElement("td");
+wtd.style.cssText=`text-align:center;border-left:1px solid #d0d8e4;width:${weekW}px;min-width:${weekW}px;height:${cellH}px`;
+wtd.innerHTML=`<span style="font-size:12px;font-weight:500;color:#1a3a5a">${fmt(m.total)}</span>`;
+tr.appendChild(wtd);
+const htd=document.createElement("td");
+const havg=m.histWeekAvg!=null?Math.round(m.histWeekAvg):null;
+const hdiff=havg!=null?Math.round(m.total-m.histWeekAvg):null;
+const hdc=hdiff!=null?(hdiff>0?"#c0392b":hdiff<0?"#27ae60":"#8aaac8"):"#8aaac8";
+const hds=hdiff!=null?(hdiff>0?"+"+hdiff:hdiff<0?""+hdiff:"±0"):"";
+htd.style.cssText=`text-align:center;border-left:1px solid #d0d8e4;width:${histW}px;min-width:${histW}px;height:${cellH}px`;
+htd.innerHTML=havg!=null
+  ?`<span style="font-size:11px;font-weight:500;color:#1a3a5a">${fmt(havg)}</span>`
+   +`<span style="color:${hdc};font-size:9px;margin-left:2px">${hds}</span>`
+  :`<span style="font-size:11px;color:#aab8c8">-</span>`;
+tr.appendChild(htd);
+tbody.appendChild(tr);});
+tbl.appendChild(tbody);wrap.appendChild(tbl);
+const maxTotal=Math.max(...p2data.map(d=>d.total));
+const p2c=document.getElementById("p2");
+p2data.forEach(d=>{
+const row=document.createElement("div");row.className="p2-row";
+
+row.innerHTML=`
+  <div class="p2-name">
+    <div style="width:18px;height:18px;border-radius:50%;background:${d.color};display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#fff;flex-shrink:0">${d.num}</div>
+    <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.name}</span>
+  </div>
+  <div><span class="stat-num">${fmt(d.total)}</span><span style="font-size:10px;color:#6a8aaa;margin-left:3px">篇</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${Math.round(d.total/maxTotal*100)}%"></div></div>
+  </div>
+  <div><span class="stat-num">${fmt(d.media)}</span><span style="font-size:10px;color:#6a8aaa;margin-left:3px">家媒體</span></div>
+  
+  <div style='display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:2px 14px;padding:0 6px'>${(d.top3||[]).map((m,i)=>`<span style='font-size:9px;color:#1a3a6a;white-space:nowrap'><span style='color:#8aaac8;margin-right:2px'>${i+1}.</span>${m.n}</span>`).join('')}</div>
+`;
+p2c.appendChild(row);});
+const p2note=document.createElement("div");
+p2note.style.cssText="font-size:8px;color:#8a9ab0;padding:4px 8px 0;text-align:right;margin-top:2px";
+p2note.textContent="※ Yahoo 為新聞聚合平台，新聞量含轉載彙整內容，故列為環境參照、不納入排名。";
+p2c.appendChild(p2note);
+function renderP3Cards(containerId,data){
+const c=document.getElementById(containerId);
+data.forEach((d,idx)=>{
+const card=document.createElement("div");
+card.className="p3-card";
+card.innerHTML=`<div class="p3-card-accent" style="background:${d.color}"></div>`
++`<div class="p3-card-left">`
++`<div class="p3-card-name"><div style="width:18px;height:18px;border-radius:50%;background:${d.color};display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#fff;flex-shrink:0">${d.num}</div>${d.name}</div>`
++`</div>`
++`<div class="p3-card-right">`
++`<div class="p3-card-summary">${d.summary||""}</div>`
++`</div>`;
+c.appendChild(card);})}
+renderP3Cards("p3a",p3data.slice(0,5));
+renderP3Cards("p3b",p3data.slice(5));
+});
+</script>
+<a href="archive.html" style="position:fixed;bottom:28px;right:28px;z-index:999;background:#0d1e3a;color:#fff;font-size:13px;font-weight:500;text-decoration:none;padding:10px 18px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;">&#9776; 所有週報</a>
 </body>
 </html>
