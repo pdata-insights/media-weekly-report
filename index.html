@@ -45,7 +45,7 @@ body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;f
 <div class="slide">
   <div class="slide-head">
     <div class="slide-head-title">媒體網路數據報表 1　本週媒體發文概況</div>
-    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+    <div class="slide-head-sub">2026年6月29日 — 7月5日</div>
   </div>
   <div class="slide-body">
     <div class="left-col">
@@ -71,6 +71,7 @@ body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;f
       <div class="card" style="flex:1">
         <div class="card-title">本週各媒體每日公共新聞發文量<span style="font-size:8px;color:#9ab0c8;font-weight:400;margin-left:6px">※ Yahoo 為新聞聚合平台，發文量含轉載彙整內容，故列為環境參照、不納入排名。</span></div>
         <div id="heatmap-wrap" style="flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
+        <div style="font-size:8px;color:#8a9ab0;text-align:right;padding-top:2px;flex-shrink:0">*歷史平均週發文量起算自2026/06/08</div>
       </div>
     </div>
   </div>
@@ -79,7 +80,7 @@ body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;f
 <div class="slide">
   <div class="slide-head">
     <div class="slide-head-title">媒體網路數據報表 2　本週議題熱度分析</div>
-    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+    <div class="slide-head-sub">2026年6月29日 — 7月5日</div>
   </div>
   <div class="p2-body">
     <div class="p2-header">
@@ -92,7 +93,7 @@ body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;f
 <div class="slide">
   <div class="slide-head">
     <div class="slide-head-title">媒體網路數據報表 3　本週議題討論摘要（1–5）</div>
-    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+    <div class="slide-head-sub">2026年6月29日 — 7月5日</div>
   </div>
   <div class="p3-card-grid" id="p3a"></div>
 </div>
@@ -100,17 +101,17 @@ body{font-family:Arial,sans-serif;padding:24px;background:#dde3ec;display:flex;f
 <div class="slide">
   <div class="slide-head">
     <div class="slide-head-title">媒體網路數據報表 4　本週議題討論摘要（6–10）</div>
-    <div class="slide-head-sub">2026年6月22日 — 6月28日</div>
+    <div class="slide-head-sub">2026年6月29日 — 7月5日</div>
   </div>
   <div class="p3-card-grid" id="p3b"></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const days=["6/22", "6/23", "6/24", "6/25", "6/26", "6/27", "6/28"];
+const days=["6/29", "6/30", "7/1", "7/2", "7/3", "7/4", "7/5"];
 function fmt(n){return Number(n).toLocaleString();}
 new Chart(document.getElementById("c1"),{type:"bar",data:{labels:days,datasets:[
-  {label:"公共事務新聞",data:[41, 40, 41, 45, 44, 44, 45],backgroundColor:"#3a7abd",stack:"s"},
-  {label:"非公共事務新聞",data:[59, 60, 59, 55, 56, 56, 55],backgroundColor:"#9db8c8",stack:"s"}
+  {label:"公共事務新聞",data:[40, 39, 43, 44, 40, 40, 44],backgroundColor:"#3a7abd",stack:"s"},
+  {label:"非公共事務新聞",data:[60, 61, 57, 56, 60, 60, 56],backgroundColor:"#9db8c8",stack:"s"}
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
 scales:{x:{ticks:{color:"#6a8aaa",font:{size:9}},grid:{color:"#eef2f8"}},
 y:{max:100,stacked:true,ticks:{color:"#6a8aaa",font:{size:9},callback:v=>v+"%"},grid:{color:"#eef2f8"}}}},
@@ -120,7 +121,7 @@ meta.data.forEach((bar,i)=>{const val=ds.data[i];if(val<6)return;
 ctx.save();ctx.fillStyle="#fff";ctx.font="bold 9px Arial";
 ctx.textAlign="center";ctx.textBaseline="middle";
 ctx.fillText(Math.round(val)+"%",bar.x,bar.y+bar.height/2);ctx.restore();});});}}]});
-const tmData=[{"name": "聯合", "val": 3284, "chg": 9}, {"name": "自由", "val": 3051, "chg": 9}, {"name": "民視新聞網", "val": 1920, "chg": 7}, {"name": "鏡傳媒", "val": 1861, "chg": 5}, {"name": "經濟日報", "val": 1724, "chg": 3}, {"name": "華視新聞網", "val": 1594, "chg": 15}, {"name": "三立", "val": 1453, "chg": 5}, {"name": "ETtoday", "val": 1427, "chg": 13}, {"name": "中央社", "val": 1238, "chg": 11}, {"name": "TVBS", "val": 1088, "chg": 7}, {"name": "中天新聞網", "val": 958, "chg": 12}];
+const tmData=[{"name": "聯合", "val": 3147, "chg": -4}, {"name": "自由", "val": 2904, "chg": -5}, {"name": "鏡傳媒", "val": 1849, "chg": -1}, {"name": "民視新聞網", "val": 1738, "chg": -9}, {"name": "經濟日報", "val": 1675, "chg": -3}, {"name": "華視新聞網", "val": 1456, "chg": -9}, {"name": "ETtoday", "val": 1346, "chg": -6}, {"name": "三立", "val": 1311, "chg": -10}, {"name": "中央社", "val": 1157, "chg": -7}, {"name": "TVBS", "val": 997, "chg": -8}, {"name": "新頭殼", "val": 902, "chg": 1}];
 const tmTotal=tmData.reduce((s,d)=>s+d.val,0);
 function getTMColor(chg){if(chg===0)return{bg:"#8aaac8",tc:"#fff"};
 const abs=Math.abs(chg),t=Math.min(abs/30,1);
@@ -143,14 +144,14 @@ if(isWide){rect={x,y:pos,w:rowLen,h:iL};pos+=iL;}
 else{rect={x:pos,y,w:iL,h:rowLen};pos+=iL;}results.push({...item,rect});});
 remaining=remaining.slice(row.length);
 if(isWide){x+=rowLen;w-=rowLen;}else{y+=rowLen;h-=rowLen;}}return results;}
-const mediaData=[{"name": "Yahoo", "daily": [1046, 1132, 1143, 1341, 1197, 829, 711], "weekTotal": 7399, "histWeekAvg": 7295.5, "dayAvg": 1057.0}, {"name": "聯合", "daily": [484, 497, 533, 556, 535, 337, 342], "weekTotal": 3284, "histWeekAvg": 3104.0, "dayAvg": 469.1}, {"name": "自由", "daily": [396, 473, 487, 532, 471, 390, 302], "weekTotal": 3051, "histWeekAvg": 2882.0, "dayAvg": 435.9}, {"name": "民視新聞網", "daily": [278, 279, 290, 327, 293, 238, 215], "weekTotal": 1920, "histWeekAvg": 1881.0, "dayAvg": 274.3}, {"name": "鏡傳媒", "daily": [271, 264, 294, 364, 319, 192, 157], "weekTotal": 1861, "histWeekAvg": 1745.5, "dayAvg": 265.9}, {"name": "經濟日報", "daily": [266, 316, 312, 304, 282, 129, 115], "weekTotal": 1724, "histWeekAvg": 1655.0, "dayAvg": 246.3}, {"name": "華視新聞網", "daily": [229, 258, 249, 274, 257, 173, 154], "weekTotal": 1594, "histWeekAvg": 1457.5, "dayAvg": 227.7}, {"name": "三立", "daily": [208, 201, 225, 291, 209, 161, 158], "weekTotal": 1453, "histWeekAvg": 1330.5, "dayAvg": 207.6}, {"name": "ETtoday", "daily": [189, 200, 246, 258, 243, 164, 127], "weekTotal": 1427, "histWeekAvg": 1312.5, "dayAvg": 203.9}, {"name": "中央社", "daily": [179, 202, 187, 224, 201, 124, 121], "weekTotal": 1238, "histWeekAvg": 1167.0, "dayAvg": 176.9}, {"name": "TVBS", "daily": [151, 156, 177, 177, 177, 135, 115], "weekTotal": 1088, "histWeekAvg": 1019.0, "dayAvg": 155.4}];
+const mediaData=[{"name": "Yahoo", "daily": [953, 1085, 1138, 1163, 964, 675, 743], "weekTotal": 6721, "histWeekAvg": 7330.0, "dayAvg": 960.1}, {"name": "聯合", "daily": [495, 515, 554, 573, 423, 259, 328], "weekTotal": 3147, "histWeekAvg": 3164.0, "dayAvg": 449.6}, {"name": "自由", "daily": [378, 446, 529, 515, 409, 322, 305], "weekTotal": 2904, "histWeekAvg": 2938.3, "dayAvg": 414.9}, {"name": "鏡傳媒", "daily": [266, 317, 302, 330, 270, 191, 173], "weekTotal": 1849, "histWeekAvg": 1784.0, "dayAvg": 264.1}, {"name": "民視新聞網", "daily": [234, 305, 307, 304, 296, 148, 144], "weekTotal": 1738, "histWeekAvg": 1894.0, "dayAvg": 248.3}, {"name": "經濟日報", "daily": [291, 295, 346, 310, 213, 92, 128], "weekTotal": 1675, "histWeekAvg": 1678.0, "dayAvg": 239.3}, {"name": "華視新聞網", "daily": [225, 249, 270, 259, 198, 123, 132], "weekTotal": 1456, "histWeekAvg": 1503.0, "dayAvg": 208.0}, {"name": "ETtoday", "daily": [204, 213, 226, 256, 184, 133, 130], "weekTotal": 1346, "histWeekAvg": 1350.7, "dayAvg": 192.3}, {"name": "三立", "daily": [217, 226, 201, 205, 202, 171, 89], "weekTotal": 1311, "histWeekAvg": 1371.3, "dayAvg": 187.3}, {"name": "中央社", "daily": [173, 207, 220, 207, 152, 91, 107], "weekTotal": 1157, "histWeekAvg": 1190.7, "dayAvg": 165.3}, {"name": "TVBS", "daily": [146, 165, 149, 163, 146, 114, 114], "weekTotal": 997, "histWeekAvg": 1042.0, "dayAvg": 142.4}];
 mediaData.forEach(m=>{m.total=m.daily.reduce((a,b)=>a+b,0);});
 mediaData.sort((a,b)=>b.total-a.total);
 const allVals=mediaData.flatMap(m=>m.daily);const maxVal=Math.max(...allVals);
 function heatColor(v,max){const t=v/max;const r=Math.round(218-t*205),g=Math.round(232-t*202),b=Math.round(248-t*190);return `rgb(${r},${g},${b})`;}
 function heatTextColor(v,max){return v/max>0.5?"#fff":"#2a3a4a";}
-const p2data=[{"num": 1, "color": "#0d3a7a", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "total": 4766, "pct": 13.3, "top3": [{"n": "自由", "c": 416, "p": 9}, {"n": "聯合", "c": 357, "p": 7}, {"n": "鏡傳媒", "c": 264, "p": 6}]}, {"num": 2, "color": "#1a4a8a", "name": "2026 地方大選", "total": 3531, "pct": 9.9, "top3": [{"n": "自由", "c": 359, "p": 10}, {"n": "聯合", "c": 297, "p": 8}, {"n": "鏡傳媒", "c": 217, "p": 6}]}, {"num": 3, "color": "#1a5a9a", "name": "美以伊戰爭", "total": 1900, "pct": 5.3, "top3": [{"n": "民視新聞網", "c": 211, "p": 11}, {"n": "聯合", "c": 180, "p": 9}, {"n": "經濟日報", "c": 170, "p": 9}]}, {"num": 4, "color": "#2a6aaa", "name": "國防議題", "total": 1667, "pct": 4.7, "top3": [{"n": "自由", "c": 164, "p": 10}, {"n": "聯合", "c": 158, "p": 9}, {"n": "經濟日報", "c": 114, "p": 7}]}, {"num": 5, "color": "#3a7aba", "name": "毒駕與毒品", "total": 1015, "pct": 2.8, "top3": [{"n": "自由", "c": 97, "p": 10}, {"n": "聯合", "c": 90, "p": 9}, {"n": "鏡傳媒", "c": 74, "p": 7}]}, {"num": 6, "color": "#4a8acb", "name": "車禍", "total": 750, "pct": 2.1, "top3": [{"n": "ETtoday", "c": 69, "p": 9}, {"n": "鏡傳媒", "c": 68, "p": 9}, {"n": "自由", "c": 60, "p": 8}]}, {"num": 7, "color": "#2a5a8a", "name": "鳳梨釋迦產銷議題", "total": 725, "pct": 2.0, "top3": [{"n": "聯合", "c": 58, "p": 8}, {"n": "自由", "c": 53, "p": 7}, {"n": "鏡傳媒", "c": 40, "p": 6}]}, {"num": 8, "color": "#1a6a9a", "name": "委內瑞拉強震", "total": 673, "pct": 1.9, "top3": [{"n": "民視新聞網", "c": 78, "p": 12}, {"n": "聯合", "c": 61, "p": 9}, {"n": "經濟日報", "c": 49, "p": 7}]}, {"num": 9, "color": "#0a4a7a", "name": "立法院長韓國瑜訪美", "total": 625, "pct": 1.7, "top3": [{"n": "自由", "c": 61, "p": 10}, {"n": "聯合", "c": 55, "p": 9}, {"n": "經濟日報", "c": 30, "p": 5}]}, {"num": 10, "color": "#2a7a9a", "name": "歐洲熱浪", "total": 492, "pct": 1.4, "top3": [{"n": "民視新聞網", "c": 97, "p": 20}, {"n": "聯合", "c": 39, "p": 8}, {"n": "華視新聞網", "c": 32, "p": 7}]}];
-const p3data=[{"num": 1, "color": "#0d3a7a", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "summary": "本週受米克拉颱風外圍環流、鋒面與西南氣流影響，引發全台豪雨，各地紛紛傳出災情，中央與各縣市也隨即推出淹水補助。豪雨與高溫導致全台農損突破 1.3 億元，包含雲林文蛤暴斃、瓜果作物受損，農業部啟動天然災害現金救助與低利貸款。政治方面，台北市內湖地區淹水，台北市議員游淑慧、林延鳳等人質疑蔣萬安市府的應變機制與清淤成效，屏東縣、新竹縣市未及時宣布停班停課也引發政治攻防。"}, {"num": 2, "color": "#1a4a8a", "name": "2026 地方大選", "summary": "由於本周豪雨引發各地淹水災情頻傳，各縣市治水成效成為選戰討論焦點。其他地方大選新聞焦點為：北市國民黨議員秦慧珠質疑，台北市研考會主委殷瑋於議會上搶答質詢會弱化市長，引發政治粉專「政客爽」發起拒投運動；新北市民進黨參選人蘇巧慧胞妹補助按持續引發討論；《ETtoday 民調雲》結果顯示，國民黨高雄市長參選人柯志恩以 46.8% 微幅領先民進黨參選人賴瑞隆。"}, {"num": 3, "color": "#1a5a9a", "name": "美以伊戰爭", "summary": "本週伊朗與美國達成協議，荷莫茲海峽已重新開放，卻傳出伊朗襲擊新加坡籍貨輪「長麗輪」、巴拿馬籍商船等事件。美軍隨後戰開報復行動，打擊伊朗境內監控基礎設施、通訊系統、防空設施、無人機等多個目標，伊朗也發動無人機與飛彈襲擊鄰國作為回應，並稱荷姆茲海峽歸伊朗管理。"}, {"num": 4, "color": "#2a6aaa", "name": "國防議題", "summary": "本週國防議題焦點：1. 立法院暫緩列案行政院所提的 2,100 億國防自主無人載具採購特別條例，民眾黨與國民黨擬各自提出黨版相關草案。2. 國軍戰開為期五天的「立即備戰操演」，M1A2T 戰車首度參與。時逢美日聯合軍演，中國國防部稱高度戒備。3. 英、法、德駐台機構發布共同發聲明，關切中國近期在台灣東部海域的活動，並重申反對任何單方面改變現狀的行為。"}, {"num": 5, "color": "#3a7aba", "name": "毒駕與毒品", "summary": "近期台灣新興毒品依托咪酯氾濫，引發多起毒駕案件。為此，行政院會正式通過刑法、刑法實施法修法，增訂毒、酒駕累犯再犯不得假釋。另外，為防制毒品進入校園，政府擬引進由退休軍警組成的「第五級保全」協助查緝校園毒品，但遭質疑權責不明，教育部對此回應此非強制性機制。"}, {"num": 6, "color": "#4a8acb", "name": "車禍", "summary": "本週重大車禍案件為：新北市議員參選人周韋翰的母親於 24 日走在行穿線時，遭公車撞上後送醫不治。客運業者稱駕駛長有先停車再開，但起步時並未發現行人通行，檢警將朝過失致死罪嫌偵辦。"}, {"num": 7, "color": "#2a5a8a", "name": "鳳梨釋迦產銷議題", "summary": "陸委會副主委梁文傑稱台灣人幾乎不吃鳳梨釋迦引發爭議後，隨後認錯並自費 15.5 萬元認購冰棒致歉。此外，台東縣長饒慶鈴因預錄海峽論壇影片推銷鳳梨釋迦而遭點名查處，執政黨強調中國市場具統戰「養套殺」高風險，輔導轉作並鼓勵分散往美日法等市場；在野黨與地方首長則稱此舉為政治犧牲農民生計。"}, {"num": 8, "color": "#1a6a9a", "name": "委內瑞拉強震", "summary": "委內瑞拉北部外海於 6 月 24 日連續發生規模 7.2 與 7.5 的強震，為126年來最大地震。首都卡拉卡斯多棟建築倒塌、機場關閉，全國進入緊急狀態。截至28 日已逾 1430 人死亡、5 萬人失蹤，各國紛紛馳援。"}, {"num": 9, "color": "#0a4a7a", "name": "立法院長韓國瑜訪美", "summary": "立法院長韓國瑜本週率跨黨派立委訪美。首站抵達鳳凰城參訪台積電廠區，隨後訪問華府，與白宮、戰爭部官員與參眾議員交流，並會晤前眾議長裴洛西、現任眾議長強生，美方並重申台美承諾不變。此外，台中市副市長鄭照新前往送機、與國民黨主席鄭麗文行程相比較亦為本週的熱議焦點。"}, {"num": 10, "color": "#2a7a9a", "name": "歐洲熱浪", "summary": "歐洲近期出現極端高溫，多國拉響紅色警報，各地高溫紛紛刷新紀錄，巴黎羅浮宮與鐵塔破例提早關閉。高溫在歐洲引發多起意外：溺水事件頻傳、幼童受困車內遭熱死；鐵軌膨脹導致鐵路癱瘓、核電廠由於無法冷卻而被迫減產。熱浪災情引發歐洲民眾搶購移動式冷氣風潮。"}];
+const p2data=[{"num": 1, "color": "#0d3a7a", "name": "2026 地方大選", "total": 3629, "pct": 10.7, "top3": [{"n": "自由", "c": 351, "p": 10}, {"n": "聯合", "c": 321, "p": 9}, {"n": "鏡傳媒", "c": 196, "p": 5}]}, {"num": 2, "color": "#1a4a8a", "name": "中聯大豆沙拉油檢出致癌物苯駢芘超標", "total": 1989, "pct": 5.8, "top3": [{"n": "聯合", "c": 174, "p": 9}, {"n": "自由", "c": 149, "p": 7}, {"n": "鏡傳媒", "c": 109, "p": 5}]}, {"num": 3, "color": "#1a5a9a", "name": "國防議題", "total": 1734, "pct": 5.1, "top3": [{"n": "自由", "c": 211, "p": 12}, {"n": "聯合", "c": 170, "p": 10}, {"n": "經濟日報", "c": 83, "p": 5}]}, {"num": 4, "color": "#2a6aaa", "name": "毒駕與毒品", "total": 1160, "pct": 3.4, "top3": [{"n": "自由", "c": 121, "p": 10}, {"n": "聯合", "c": 95, "p": 8}, {"n": "ETtoday", "c": 78, "p": 7}]}, {"num": 5, "color": "#3a7aba", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "total": 1107, "pct": 3.3, "top3": [{"n": "自由", "c": 105, "p": 9}, {"n": "聯合", "c": 102, "p": 9}, {"n": "三立", "c": 54, "p": 5}]}, {"num": 6, "color": "#4a8acb", "name": "美以伊戰爭", "total": 980, "pct": 2.9, "top3": [{"n": "民視新聞網", "c": 123, "p": 13}, {"n": "聯合", "c": 102, "p": 10}, {"n": "經濟日報", "c": 99, "p": 10}]}, {"num": 7, "color": "#2a5a8a", "name": "車禍", "total": 918, "pct": 2.7, "top3": [{"n": "ETtoday", "c": 97, "p": 11}, {"n": "鏡傳媒", "c": 86, "p": 9}, {"n": "自由", "c": 77, "p": 8}]}, {"num": 8, "color": "#1a6a9a", "name": "中國實施民族團結進步促進法", "total": 881, "pct": 2.6, "top3": [{"n": "自由", "c": 80, "p": 9}, {"n": "鏡傳媒", "c": 73, "p": 8}, {"n": "聯合", "c": 65, "p": 7}]}, {"num": 9, "color": "#0a4a7a", "name": "烏俄戰爭", "total": 639, "pct": 1.9, "top3": [{"n": "民視新聞網", "c": 108, "p": 17}, {"n": "自由", "c": 67, "p": 10}, {"n": "新頭殼", "c": 58, "p": 9}]}, {"num": 10, "color": "#2a7a9a", "name": "行政院經貿總談判代表楊珍妮涉職場霸凌遭免職", "total": 382, "pct": 1.1, "top3": [{"n": "聯合", "c": 34, "p": 9}, {"n": "鏡傳媒", "c": 23, "p": 6}, {"n": "經濟日報", "c": 21, "p": 5}]}];
+const p3data=[{"num": 1, "color": "#0d3a7a", "name": "2026 地方大選", "summary": "本週地方大選焦點著重在：1. 國民黨與民眾黨立法院黨團聯手推動包含六項公投提案，欲趕上年底地方大選。其中，不在籍投票、反廢死、交通罰鍰專款專用、鞭刑等公投案已逕付二讀。對此，中選會主委游盈隆日前表示年底公投綁大選已成必然趨勢，中選會將依法審議公投案 2. 新北捷運三鶯線通車，國民黨新北市議會黨團批評推動時遭遇前行政院長蘇貞昌卡關，對此，新北市長參選人蘇巧慧回應卡關為謠言 3. 國民黨立委萬美玲之子、桃園市議員參選人佀廣洋遭爆料曾校園霸凌，對此立委萬美玲拒絕回應。"}, {"num": 2, "color": "#1a4a8a", "name": "中聯大豆沙拉油檢出致癌物苯駢芘超標", "summary": "國內大宗油脂油品上游大廠中聯油脂的大豆沙拉油原料被驗出「苯駢芘」一級致癌物超標，高達 1,300 噸的含毒原料已流向三大油廠泰山、福壽與福懋。食藥署與各縣市衛生局公布受影響名單，王品、桂冠、聯華食品等知名大廠均上榜。食藥署主張「加工食品等第二層產品風險低」，宣布不全面公布下游食品名單，消基會對此強烈抗議，最終公布 257 家受害的第二層下游業者名單，並鼓勵小吃店主動揭露。"}, {"num": 3, "color": "#1a5a9a", "name": "國防議題", "summary": "本週國防議題聚焦於國防自主無人載具採購特別條例：行政院於上週推出《國防自主無人載具採購特別條例》草案，隨後國民黨與民眾黨也各自推出黨版草案，主張將預算改列「年度公務預算」並要求加碼。對此，行政院回應立法院依法不得提議增加預算支出，有違憲之虞。目前行政院、國民黨團、民眾黨團及民進黨立委自提之共4個版本無人載具條例草案全數一併付委審查。"}, {"num": 4, "color": "#2a6aaa", "name": "毒駕與毒品", "summary": "新興毒品「喪屍煙彈（依托咪酯）」正式升格列管為第一級毒品，警政署啟動青春專案大規模掃蕩。交通部首度將毒駕納入道安統計，今年截至四月已奪九命。而日前北市南港發生一起嚴重大車車禍，一輛砂石車為閃避迴轉車失控猛撞路邊電線桿，導致整根電桿橫躺馬路。警方到場查獲駕駛同時涉嫌「酒駕＋毒駕」，驗出吸毒與酒精雙重反應，當場被逮。"}, {"num": 5, "color": "#3a7aba", "name": "米克拉颱風、鋒面及西南氣流導致全台豪雨", "summary": "日前極端強降雨在全台引發嚴重農損，即日起可申請現金救助。而台北市內湖、南港等多地出現嚴重積淹水與邊坡坍方，圓山保齡球館遭巨石砸穿。市長蔣萬安視察災區傳出誤發慰問金給四樓住戶，對此市府回應慰問金是依規定與造冊核實發放。總統賴清德與市長蔣萬安於指南宮同台參香時，也因內湖淹水歸責而引發政治攻防。"}, {"num": 6, "color": "#4a8acb", "name": "美以伊戰爭", "summary": "美以伊戰爭本週聚焦在停火談判進程與伊朗前最高領袖哈米尼國葬。美伊經歷互轟後於杜哈展開間接談判，核心爭議在荷姆茲海峽的管轄權與收費問題。伊朗前最高領袖哈米尼國葬啟動，美國總統川普宣布喪禮期間不交火，談判暫停一週。"}, {"num": 7, "color": "#2a5a8a", "name": "車禍", "summary": "本週重大車禍焦點為：高雄路竹發生驚悚雙亡車禍。一名男子載妻女外出，因高速失控「保齡球式」瘋狂橫掃慢車道，導致2名無辜機車騎士當場死亡。警方一查發現，駕駛為無照駕駛累犯，肇事駕駛偵訊後裁定十萬元交保。"}, {"num": 8, "color": "#1a6a9a", "name": "中國實施民族團結進步促進法", "summary": "中國於 7 月 1 日實施《民族團結法》，由於條文模糊且擴大境外適用，涉及長臂管轄、跨境鎮壓等問題，引發各界關注，更引起西藏運動人士洛嘎・讓贊於紐約聯合國總部外自焚抗議中國的高壓民族政策。台灣方面，陸委會表示政再跨部會研議反制措施；民進黨立法院黨團提案譴責，但遭否決，未列案討論。"}, {"num": 9, "color": "#0a4a7a", "name": "烏俄戰爭", "summary": "烏克蘭遠程無人機發動系統性突襲，癱瘓俄羅斯近 43% 的煉油產能，俄羅斯總統普丁罕見承認面臨燃料短缺，正研擬禁止柴油與燃料出口。俄軍發動大規模毀滅性空襲基輔住宅區報復，釀嚴重死傷。俄軍亦宣稱已在烏克蘭東部頓內茨克地區奪下重鎮康斯坦丁諾夫卡。外交上，路透社指出中國秘密協助俄軍訓練，而隨著北約峰會即將召開，美國總統川普先後與俄烏雙邊熱線，表達強烈調停意願。"}, {"num": 10, "color": "#2a7a9a", "name": "行政院經貿總談判代表楊珍妮涉職場霸凌遭免職", "summary": "行政院前經貿辦總談判代表楊珍妮涉職場霸凌副總談判代表顏慧欣，行政院調查屬實後其自7月1日起停職，楊珍妮隨即發聲明反擊， 經貿辦逾 30 位同仁亦發表聯合聲明力挺。顏慧欣父親前財政部長顏慶章發表聲明，痛批楊珍妮說謊並期盼體制改革，目前監察院已立案調查。"}];
 window.addEventListener("load",()=>{
 const container=document.getElementById("tm");
 const W=container.offsetWidth,H=container.offsetHeight,totalArea=W*H;
@@ -194,7 +195,7 @@ const tbl=document.createElement("table");
 tbl.style.cssText="width:100%;border-collapse:collapse;table-layout:fixed";
 const thead=document.createElement("thead");
 const htr=document.createElement("tr");
-[{label:"媒體",w:headerW},...days.map(d=>({label:d,w:null})),{label:"本週總發文量 ↓",w:weekW},{label:"歷史平均週發文量（本週±）",w:histW}].forEach(h=>{
+[{label:"媒體",w:headerW},...days.map(d=>({label:d,w:null})),{label:"本週總發文量 ↓",w:weekW},{label:"歷史平均週發文量*（本週±）",w:histW}].forEach(h=>{
 const th=document.createElement("th");
 th.style.cssText=`font-size:9px;color:#6a8aaa;font-weight:400;text-align:center;padding:2px 0;border-bottom:1px solid #d0d8e4;${h.w?"width:"+h.w+"px;min-width:"+h.w+"px":""}`;
 th.textContent=h.label;htr.appendChild(th);});
@@ -241,7 +242,7 @@ row.innerHTML=`
   <div><span class="stat-num">${fmt(d.total)}</span><span style="font-size:10px;color:#6a8aaa;margin-left:3px">篇</span>
     <div class="bar-track"><div class="bar-fill" style="width:${Math.round(d.total/maxTotal*100)}%"></div></div>
   </div>
-  <div><span class="stat-num">${d.pct}%</span></div>
+  <div><span class="stat-num">${d.pct.toFixed(1)}%</span></div>
   
   <div style='display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:2px 14px;padding:0 6px'>${(d.top3||[]).map((m,i)=>`<span style='font-size:9px;color:#1a3a6a;white-space:nowrap'><span style='color:#8aaac8;margin-right:2px'>${i+1}.</span>${m.n}</span>`).join('')}</div>
 `;
@@ -267,6 +268,5 @@ renderP3Cards("p3a",p3data.slice(0,5));
 renderP3Cards("p3b",p3data.slice(5));
 });
 </script>
-<a href="archive.html" style="position:fixed;bottom:28px;right:28px;z-index:999;background:#0d1e3a;color:#fff;font-size:13px;font-weight:500;text-decoration:none;padding:10px 18px;border-radius:24px;box-shadow:0 4px 16px rgba(0,0,0,0.25);display:flex;align-items:center;gap:8px;">&#9776; 所有週報</a>
 </body>
 </html>
