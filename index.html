@@ -202,14 +202,14 @@ t1.setAttribute("font-family","Arial");t1.textContent=item.name;g.appendChild(t1
 container.appendChild(svg);
 const wrap=document.getElementById("heatmap-wrap");
 const cellH=Math.floor((wrap.offsetHeight-30)/Math.max(mediaData.length,1));
-const headerW=96,weekW=44,histW=56;
+const headerW=84,weekW=42,histW=68;
 const tbl=document.createElement("table");
 tbl.style.cssText="width:100%;border-collapse:collapse;table-layout:fixed";
 const thead=document.createElement("thead");
 const htr=document.createElement("tr");
-[{label:"媒體",w:headerW},...days.map(d=>({label:d,w:null})),{label:"本週總發文量 ↓",w:weekW,align:"right"},{label:"歷史平均週發文量*（本週±）",w:histW,align:"right"}].forEach(h=>{
+[{label:"媒體",w:headerW},...days.map(d=>({label:d,w:null})),{label:"本週總發文量 ↓",w:weekW},{label:"歷史平均週發文量*（本週±）",w:histW}].forEach(h=>{
 const th=document.createElement("th");
-th.style.cssText=`font-size:9px;color:#6a8aaa;font-weight:400;text-align:${h.align||"center"};padding:2px 0;border-bottom:1px solid #d0d8e4;${h.w?"width:"+h.w+"px;min-width:"+h.w+"px":""}`;
+th.style.cssText=`font-size:9px;color:#6a8aaa;font-weight:400;text-align:center;padding:2px 0;border-bottom:1px solid #d0d8e4;${h.w?"width:"+h.w+"px;min-width:"+h.w+"px":""}`;
 th.textContent=h.label;htr.appendChild(th);});
 thead.appendChild(htr);tbl.appendChild(thead);
 const tbody=document.createElement("tbody");
@@ -222,22 +222,24 @@ ntd.innerHTML=`<span style="display:flex;align-items:center;height:100%;overflow
 tr.appendChild(ntd);
 m.daily.forEach(v=>{const td=document.createElement("td");
 const bg=heatColor(v,maxVal);const tc=heatTextColor(v,maxVal);
-td.style.cssText=`background:${bg};text-align:center;font-size:9px;font-weight:500;color:${tc};height:${cellH}px;border:1px solid #fff`;
+td.style.cssText=`background:${bg};text-align:center;font-size:10px;font-weight:500;color:${tc};height:${cellH}px;border:1px solid #fff`;
 td.textContent=v>0?fmt(v):"";tr.appendChild(td);});
 const wtd=document.createElement("td");
-wtd.style.cssText=`text-align:right;padding-right:4px;border-left:1px solid #d0d8e4;width:${weekW}px;min-width:${weekW}px;height:${cellH}px`;
-wtd.innerHTML=`<span style="font-size:9px;font-weight:500;color:#1a3a5a">${fmt(m.total)}</span>`;
+wtd.style.cssText=`text-align:center;border-left:1px solid #d0d8e4;width:${weekW}px;min-width:${weekW}px;height:${cellH}px`;
+wtd.innerHTML=`<span style="font-size:10px;font-weight:500;color:#1a3a5a">${fmt(m.total)}</span>`;
 tr.appendChild(wtd);
 const htd=document.createElement("td");
 const havg=m.histWeekAvg!=null?Math.round(m.histWeekAvg):null;
 const hdiff=havg!=null?Math.round(m.total-m.histWeekAvg):null;
 const hdc=hdiff!=null?(hdiff>0?"#c0392b":hdiff<0?"#27ae60":"#8aaac8"):"#8aaac8";
 const hds=hdiff!=null?(hdiff>0?"+"+fmt(hdiff):hdiff<0?fmt(hdiff):"±0"):"";
-htd.style.cssText=`text-align:right;padding-right:4px;border-left:1px solid #d0d8e4;width:${histW}px;min-width:${histW}px;height:${cellH}px`;
+htd.style.cssText=`text-align:center;white-space:nowrap;border-left:1px solid #d0d8e4;width:${histW}px;min-width:${histW}px;height:${cellH}px`;
 htd.innerHTML=havg!=null
-  ?`<span style="font-size:9px;font-weight:500;color:#1a3a5a">${fmt(havg)}</span>`
-   +`<span style="color:${hdc};font-size:9px;margin-left:2px">${hds}</span>`
-  :`<span style="font-size:9px;color:#aab8c8">-</span>`;
+  ?`<span style="display:inline-flex;justify-content:center;width:100%">`
+   +`<span style="width:32px;text-align:center;font-size:10px;font-weight:500;color:#1a3a5a">${fmt(havg)}</span>`
+   +`<span style="width:30px;text-align:center;color:${hdc};font-size:10px">${hds}</span>`
+   +`</span>`
+  :`<span style="font-size:10px;color:#aab8c8">-</span>`;
 tr.appendChild(htd);
 tbody.appendChild(tr);});
 tbl.appendChild(tbody);wrap.appendChild(tbl);
