@@ -222,11 +222,11 @@ ntd.innerHTML=`<span style="display:flex;align-items:center;height:100%;overflow
 tr.appendChild(ntd);
 m.daily.forEach(v=>{const td=document.createElement("td");
 const bg=heatColor(v,maxVal);const tc=heatTextColor(v,maxVal);
-td.style.cssText=`background:${bg};text-align:center;font-size:10px;font-weight:500;color:${tc};height:${cellH}px;border:1px solid #fff`;
+td.style.cssText=`background:${bg};text-align:center;font-size:9px;font-weight:500;color:${tc};height:${cellH}px;border:1px solid #fff`;
 td.textContent=v>0?fmt(v):"";tr.appendChild(td);});
 const wtd=document.createElement("td");
 wtd.style.cssText=`text-align:center;border-left:1px solid #d0d8e4;width:${weekW}px;min-width:${weekW}px;height:${cellH}px`;
-wtd.innerHTML=`<span style="font-size:10px;font-weight:500;color:#1a3a5a">${fmt(m.total)}</span>`;
+wtd.innerHTML=`<span style="font-size:9px;font-weight:500;color:#1a3a5a">${fmt(m.total)}</span>`;
 tr.appendChild(wtd);
 const htd=document.createElement("td");
 const havg=m.histWeekAvg!=null?Math.round(m.histWeekAvg):null;
@@ -235,9 +235,9 @@ const hdc=hdiff!=null?(hdiff>0?"#c0392b":hdiff<0?"#27ae60":"#8aaac8"):"#8aaac8";
 const hds=hdiff!=null?(hdiff>0?"+"+fmt(hdiff):hdiff<0?fmt(hdiff):"±0"):"";
 htd.style.cssText=`text-align:center;border-left:1px solid #d0d8e4;width:${histW}px;min-width:${histW}px;height:${cellH}px`;
 htd.innerHTML=havg!=null
-  ?`<span style="font-size:10px;font-weight:500;color:#1a3a5a">${fmt(havg)}</span>`
-   +`<span style="color:${hdc};font-size:10px;margin-left:2px">${hds}</span>`
-  :`<span style="font-size:10px;color:#aab8c8">-</span>`;
+  ?`<span style="font-size:9px;font-weight:500;color:#1a3a5a">${fmt(havg)}</span>`
+   +`<span style="color:${hdc};font-size:9px;margin-left:2px">${hds}</span>`
+  :`<span style="font-size:9px;color:#aab8c8">-</span>`;
 tr.appendChild(htd);
 tbody.appendChild(tr);});
 tbl.appendChild(tbody);wrap.appendChild(tbl);
